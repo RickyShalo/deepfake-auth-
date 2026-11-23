@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Deepfake-Aware Face Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Deepfake-Aware Face Login</h1>
+    <p class="subtitle">FaceNet checks who you are. Deep-Fake-Detector-v2 checks that the photo is real.</p>
+
+    <div class="cards">
+        <div class="card">
+            <h2>Enroll</h2>
+            <p>Upload at least {{ min_photos }} clear photos of your face (one face per photo).</p>
+            <form action="/enroll" method="post" enctype="multipart/form-data">
+                <label>Name</label>
+                <input type="text" name="name" required>
+
+                <label>Photos</label>
+                <input type="file" name="photos" accept="image/*" multiple required>
+
+                <button type="submit">Enroll</button>
+            </form>
+        </div>
+
+        <div class="card">
+            <h2>Login</h2>
+            <p>Upload one photo to check against your enrolled face.</p>
+            <form action="/verify" method="post" enctype="multipart/form-data">
+                <label>Name</label>
+                <input type="text" name="name" required>
+
+                <label>Photo</label>
+                <input type="file" name="photo" accept="image/*" required>
+
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

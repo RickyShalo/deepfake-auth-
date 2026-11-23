@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ title }} Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>{{ title }} Result</h1>
+
+    <div class="card {% if success %}success{% else %}failure{% endif %}">
+        <h2>{% if success %}Success{% else %}Failed{% endif %}</h2>
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <p><a href="/">Back to home</a></p>
+</body>
+</html>
